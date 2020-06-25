@@ -1,4 +1,5 @@
 # bookeep
+- 通过vue/vue-Router/vuex/scss来实现一款简单易用的移动端记账工具
 
 ## Project setup
 ```
