@@ -1,29 +1,28 @@
 <template>
-    <div class="nav-wrapper">
-        <div class="content">
-            <slot/>
-        </div>
-        <Nav/>
+  <div class="layout-wrapper" :class="classPrefix && `${classPrefix}-wrapper`">
+    <div class="content" :class="classPrefix && `${classPrefix}-content`   ">
+      <slot/>
     </div>
+    <Nav/>
+  </div>
 </template>
 
 <script lang="ts">
 
-    export default{
-     name:'Layout'   
-    }
+    export default {
+    props: ['classPrefix'],
+    name: 'Layout'
+  };
 </script>
 
 <style lang="scss" scoped>
-.nav-wrapper{
+  .layout-wrapper {
     display: flex;
-    // border: 1px solid green;
     flex-direction: column;
-    height:100vh;  
-}
-.content{
-    flex-grow:1;/*让.content尽量占据更多的空间 */
-     overflow: auto;/*让内容区域可滚动 */
-    //  border: 1px solid blue;
-}
+    height: 100vh;
+  }
+  .content {
+    overflow: auto;
+    flex-grow: 1;
+  }
 </style>
