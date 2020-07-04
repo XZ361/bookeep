@@ -3,6 +3,7 @@ import Layout from '@/components/Layout.vue';
 import Nav from '@/components/Nav.vue';
 import Vue from 'vue';
 import App from './App.vue';
+import recordListModel from './models/recordListModel';
 import tagListModel from './models/tagListModel';
 import './registerServiceWorker';
 import router from './router';
@@ -14,6 +15,11 @@ Vue.component('Nav',Nav)
 Vue.component('Layout',Layout)
 Vue.component('Icon',Icon);
 
+// record store
+window.recordList=recordListModel.fetch();
+window.createRecord=(record:RecordItem)=>recordListModel.create(record)
+
+// tag store
 window.tagList=tagListModel.fetch();
 window.findTag=(id:string)=>{
   return window.tagList.filter(t=>t.id===id)[0];
