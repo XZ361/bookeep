@@ -70,6 +70,7 @@
     align-items: center;
     justify-content: space-between;
     >.title{
+        border:none;
     }
     > .leftIcon{
         width: 24px;

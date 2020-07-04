@@ -9,7 +9,7 @@ type TagListModel={
     fetch: ()=> Tag[];
     create: (name: string)=>'success' | 'duplicated';//联合类型
     update:(id: string,name: string)=>'success' | 'no found' |'duplicated';
-    remove:(id: string)=> boolean | undefined;
+    remove:(id: string)=> boolean;
     save: ()=>void;
 }
 const tagListModel: TagListModel = {
@@ -51,11 +51,10 @@ const tagListModel: TagListModel = {
                 index = i;
                 break;
             }
-            this.data.splice(index,1);
-            this.save();
-            return true;
-            
         }
+        this.data.splice(index,1);
+        this.save();
+        return true;
     },
     save() {
         window.localStorage.setItem(localStorageKeyName, JSON.stringify(this.data));
