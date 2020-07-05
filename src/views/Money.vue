@@ -1,13 +1,13 @@
 <template>
     <Layout class-prefix="layout">
-        <NumberPad @update:value="onUpdateAmount" @submit="saveRecord"/>
+        <NumberPad  :value.sync="record.amount" @submit="saveRecord"/>
         <Types :value.sync="record.type"/>
         <div class="notes">
           <FormItem filed-name="备注"
                @update:value="onUpdateNotes"
                placeholder="在这里输入备注"/>
         </div>
-        <Tags :data-source.sync="tags" @update:value="onUpdateTags"/>
+        <Tags />
     </Layout>
 </template>
 
@@ -27,22 +27,12 @@
 
   })
   export default class Money extends Vue{
-    tags = store.tagList;
     recordList=store.recordList;
     record: RecordItem={tags:[],notes:'',type:'-',amount:0}
 
-    onUpdateTags(value: string[]){
-      this.record.tags=value;
-    }
+
     onUpdateNotes(value: string){
       this.record.notes=value;
-    }
-    onUpdateAmount(value: string){
-      this.record.amount=parseFloat(value);
-    }
-
-    saveRecord(){
-      store.createRecord(this.record);
     }
   }
 </script>
