@@ -19,7 +19,6 @@
    @Prop({required:true}) filedName!: string;
    @Prop() placeholder?: string;
 
-
    onValueChanged(value: string){
      this.$emit('update:value',value);
 
