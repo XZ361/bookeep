@@ -15,17 +15,22 @@
 <script lang="ts">
   import Vue from 'vue';
   import {Component} from 'vue-property-decorator';
-  import store from '@/store/index2';
-  @Component
+  @Component({
+    computed:{
+      tagList(){
+        return this.$store.fetchTags();
+      }
+    }
+  })
   export default class Tags extends Vue{
-    tagList = store.fetchTags();
+   
     selectedTags: string[]=[];
     toggle(tag: string){
       const index=this.selectedTags.indexOf(tag);
       if(index>=0){
         this.selectedTags.splice(index,1);
       }else{
-      this.selectedTags.push(tag);
+        this.selectedTags.push(tag);
       }
       this.$emit('update:value',this.selectedTags);
     }
