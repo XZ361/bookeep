@@ -23,16 +23,15 @@
 
   @Component({
     components: {Tags, FormItem, Types, NumberPad},
-    computed:{
-      recordList(){
-        return this.$store.state.recoreList;
-      }
-    }
   })
   export default class Money extends Vue{
+    get recordList(){
+      return this.$store.state.recoreList;
+    }
     record: RecordItem={
       tags:[],notes:'',type:'-',amount:0
     }
+
     created () {
       this.$store.commit('fetchRecords');
     }
