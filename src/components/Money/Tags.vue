@@ -18,13 +18,16 @@
   @Component({
     computed:{
       tagList(){
-        return this.$store.fetchTags();
+        return this.$store.state.tagList;
       }
     }
   })
   export default class Tags extends Vue{
-   
     selectedTags: string[]=[];
+
+    created () {
+      this.$store.commit('fetchTags');
+    }
     toggle(tag: string){
       const index=this.selectedTags.indexOf(tag);
       if(index>=0){
@@ -37,7 +40,7 @@
     create(){
       const name=window.prompt('请输入标签名: ');
       if (!name) { return window.alert('标签名不能为空'); }
-      store.createTag(name);
+      this.$store.commit('createTag',name);
     }
   }
 </script>
