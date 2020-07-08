@@ -38,7 +38,7 @@
     created () {
       this.$store.commit('fetchRecords');
     }
-    onUpdateTags(value: string[]) {	
+    onUpdateTags(value: Tag[]) {	
       this.record.tags = value;	
     }
     onUpdateNotes(value: string){
